@@ -3,11 +3,12 @@
  ************************/
 
 // Script variables
+const database = "clearpay"
 const user = "clearpayAdmin"
 const password = "h6rU2xWjT@=StU+s"
 
 // Create connection
-const db = connect("127.0.0.1:27017/clearpay", user, password)
+const db = connect(`127.0.0.1:27017/${database}`, user, password)
 
 // Make sure the clearpay database is clean
 db.users.drop()
@@ -21,6 +22,7 @@ db.createCollection("users", {
             bsonType: "object",
             required: ["username", "name", "surname"],
             properties: {
+                _id: {},
                 username: {
                     bsonType: "string",
                     minLength: 8,
@@ -50,6 +52,7 @@ db.createCollection("wallets", {
             bsonType: "object",
             required: ["userId", "alias", "balance"],
             properties: {
+                _id: {},
                 userId: {
                     bsonType: "string",
                     description: "The ID of the uses who this wallet belongs to. userId + alias combination must be unique."
@@ -76,6 +79,7 @@ db.createCollection("transactions", {
             bsonType: "object",
             required: ["sourceWalletId", "destinationWalletId", "amount", "date"],
             properties: {
+                _id: {},
                 sourceWalletId: {
                     bsonType: "string",
                     description: "The id of the wallet that performed the transaction."
@@ -102,3 +106,7 @@ db.createCollection("transactions", {
         }
     }
 });
+
+// Add constraints
+db.users.createIndex({ "username": 1 }, { name: "username", unique: true })
+db.wallets.createIndex({ 'userId': 1, 'alias': 1 }, { name: "unique_wallet_alias_per_users", unique: true })
