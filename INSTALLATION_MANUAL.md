@@ -82,9 +82,22 @@ $ sudo docker-compose up -d mongodb
 $ sudo docker-compose logs -f --tail=100 mongodb
 ```
 
+7. Enter to the bash console of the image with (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
+
+```console
+$ sudo docker exec -it mongodb bash
+```
+
+8. Follow the [Common steps](#common-steps)
+
 #### Common steps
 
-1. Enter the mongo shell with the configured root credentials
+1. Enter the mongo shell with the configured root credentials (change *root* for the user and password for the root user)
+
+```console
+$ mongo -u root -p root
+```
+
 2. Create an user with read/write rights for the application database. IE:
 
 ```javascript
