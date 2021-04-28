@@ -19,3 +19,8 @@ services:
     ports:
       - 8080:8080
     restart: unless-stopped
+    command: ["--spring.data.mongodb.host=localhost",
+              "--spring.data.mongodb.port=27017",
+              "--spring.data.mongodb.database=clearpay",
+              "--spring.data.mongodb.username=clearpayAdmin",
+              "--spring.data.mongodb.password=h6rU2xWjT@=StU+s"]

@@ -1,19 +1,18 @@
-# ClearPay Code Challenge - Installation Manual
+# ClearPay Code Challenge
 
-## Table of contents
+This is the documentation source documentation for the ClearPay Code Challenge.
 
-- [Requisites](#requisites)
-  - [If using docker](#if-using-docker)
-  - [On the right](#on-the-right)
+<br/>
 
-## Requisites
+## Repositories
 
-- MongoDB v4.2-bionic*
+- Documentation repo: [clearpay-doc](https://github.com/esanchep/clearpay-doc)
+- Database: no repo needed.
+- Backend repo: [clearpay-be](https://github.com/esanchep/clearpay-be)
+- Frontend repo: [clearpay-fe](https://github.com/esanchep/clearpay-fe)
 
-<span style="font-size: 12px;">*Checkout Mongodb 🠈🠊 Spring Data compatibility matrix [here](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#compatibility.matrix)</span>
+<br/>
 
-### If using docker
+## Getting started
 
-Provided [`docker-compose.yml`](docker/docker-compose.yml) file 
-- docker v19.03.0+
-- docker-compose v1.29
+You can find an installation manual [here](/INSTALLATION_MANUAL.md). Follow the steps to install each of the components.
