@@ -21,7 +21,7 @@
 
 - MongoDB v4.2-bionic
 
-<span style="font-size: 12px;">NOTE: Checkout Mongodb 🠈🠊 Spring Data compatibility matrix [here](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#compatibility.matrix)
+<span style="font-size: 12px; color: gray;">NOTE: Checkout Mongodb 🠈🠊 Spring Data compatibility matrix [here](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#compatibility.matrix)
 (Spring Boot version used in the BE project: 2.4.5)</span>
 
 ### Docker and docker-compose
@@ -29,7 +29,7 @@
 - docker v19.03.0+
 - docker-compose v1.29
 
-<span style="font-size: 12px;">NOTE: if you want to use other versions remember to change the `version` property on the [`docker-compose.yml`](docker/docker-compose.yml) to the corresponding one</span>
+<span style="font-size: 12px; color: gray;">NOTE: if you want to use other versions remember to change the **version** property on the [`docker-compose.yml`](docker/docker-compose.yml) to the corresponding one</span>
 
 <br/>
 
@@ -46,38 +46,99 @@
 
 ## Installation
 
-<span style="font-size: 12px;">NOTE: for product versions [see Product versions used](#product-versions-used) section</span>
+<span style="font-size: 12px; color: gray;">NOTE: for product versions [see Product versions used](#product-versions-used) section</span>
 
-<span style="font-size: 12px;">NOTE: Provided in this repo you will find a [`docker-compose.yml`](docker/docker-compose.yml) file with all the necessary parameters to set up the different containers.</span>
+<span style="font-size: 12px; color: gray;">NOTE: Provided in this repo you will find a [`docker-compose.yml`](docker/docker-compose.yml) file with all the necessary parameters to set up the different containers.</span>
+
+<br/>
 
 ### Database component installation
 
 #### Without docker and docker-compose
 
-- Manually install and configure MongoDB on your system
+1. Manually install and configure MongoDB on your system
+2. Follow the [Common steps](#common-steps)
 
 #### With docker and docker-compose
 
 1. Setup your environment with the necessary mapped directories to store the database collections and database scripts
 2. Configure docker-compose.yml to reflect this configuration
 3. (Optional) change `docker-compose.yml` **MONGO_INITDB_ROOT_USERNAME** and **MONGO_INITDB_ROOT_PASSWORD** if you want another user to be used as root user
-4. Download the database image with `$ sudo docker-compose pull mongodb` (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
-5. Once downloaded, pull up the database image with `$ sudo docker-compose up -d mongodb` (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
-6. Verify the container is up and ready by reviewing the logs with `$ sudo docker-compose logs -f --tail=100 mongodb` (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
+4. Download the database image with (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
+
+```console
+$ sudo docker-compose pull mongodb
+```
+
+5. Once downloaded, pull up the database image with (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
+
+```console
+$ sudo docker-compose up -d mongodb
+```
+
+6. Verify the container is up and ready by reviewing the logs with (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
+
+```console
+$ sudo docker-compose logs -f --tail=100 mongodb
+```
+
+#### Common steps
+
+1. Enter the mongo shell with the configured root credentials
+2. Create an user with read/write rights for the application database. IE:
+
+```javascript
+db.createUser({user: "clearpayAdmin", pwd: "h6rU2xWjT@=StU+s", roles : [{role: "readWrite", db: "clearpay"}]});
+```
+
+3. Launch the [`00-schema.js`](/scripts/00-schema.js) script to create collections and indexes <span style="font-size: 12px; color: gray;">NOTE: change the user, password and database variables if needed</span>
+4. Launch the [`01-load_data.js`](/scripts/01-load_data.js) script to generate some data to start with (this is needed because there is no possibility to create users and wallets - see [Wishlist](#wishlist) section)
+
+<br/>
 
 ### Backend component installation
 
 1. Configure `docker-compose.yml` with the desired options (exposed port, database connection parameters in the **command** property...)
-2. Download the backend image with `$ sudo docker-compose pull clearpay-be` (replace **clearpay-be** by the **image_name** you configured in the `docker-compose.yml`)
-3. Once downloaded, pull up the backend image with `$ sudo docker-compose up -d clearpay-be` (replace **clearpay-be** by the **image_name** you configured in the `docker-compose.yml`)
-4. Verify the container is up and ready by reviewing the logs with `$ sudo docker-compose logs -f --tail=100 clearpay-fe` (replace **clearpay-fe** by the **image_name** you configured in the `docker-compose.yml`)
+2. Download the backend image with (replace **clearpay-be** by the **image_name** you configured in the `docker-compose.yml`)
+
+``` console
+$ sudo docker-compose pull clearpay-be
+```
+
+3. Once downloaded, pull up the backend image with (replace **clearpay-be** by the **image_name** you configured in the `docker-compose.yml`)
+
+```console
+$ sudo docker-compose up -d clearpay-be
+```
+
+4. Verify the container is up and ready by reviewing the logs with (replace **clearpay-fe** by the **image_name** you configured in the `docker-compose.yml`)
+
+```console
+$ sudo docker-compose logs -f --tail=100 clearpay-fe
+```
+
+<br/>
 
 ### Frontend component installation
 
 1. Configure `docker-compose.yml` with the desired options
-2. Download the frontend image with `$ sudo docker-compose pull clearpay-fe` (replace **clearpay-fe** by the **image_name** you configured in the `docker-compose.yml`)
-3. Once downloaded, pull up the frontend image with `$ sudo docker-compose up -d clearpay-fe` (replace **clearpay-fe** by the **image_name** you configured in the `docker-compose.yml`)
-4. Verify the container is up and ready by reviewing the logs with `$ sudo docker-compose logs -f --tail=100 clearpay-be` (replace **clearpay-be** by the **image_name** you configured in the `docker-compose.yml`)
+2. Download the frontend image with (replace **clearpay-fe** by the **image_name** you configured in the `docker-compose.yml`)
+
+```console
+$ sudo docker-compose pull clearpay-fe
+```
+
+3. Once downloaded, pull up the frontend image with (replace **clearpay-fe** by the **image_name** you configured in the `docker-compose.yml`)
+
+```console
+$ sudo docker-compose up -d clearpay-fe
+```
+
+4. Verify the container is up and ready by reviewing the logs with (replace **clearpay-be** by the **image_name** you configured in the `docker-compose.yml`)
+
+```
+$ sudo docker-compose logs -f --tail=100 clearpay-be
+```
 
 <br/>
 
