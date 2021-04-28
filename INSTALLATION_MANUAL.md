@@ -67,25 +67,25 @@
 1. Setup your environment with the necessary mapped directories to store the database collections and database scripts
 2. Configure docker-compose.yml to reflect this configuration
 3. (Optional) change `docker-compose.yml` **MONGO_INITDB_ROOT_USERNAME** and **MONGO_INITDB_ROOT_PASSWORD** if you want another user to be used as root user
-4. Download the database image with (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
+4. Download the database image with (replace **mongodb** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
 $ sudo docker-compose pull mongodb
 ```
 
-5. Once downloaded, pull up the database image with (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
+5. Once downloaded, pull up the database image with (replace **mongodb** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
 $ sudo docker-compose up -d mongodb
 ```
 
-6. Verify the container is up and ready by reviewing the logs with (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
+6. Verify the container is up and ready by reviewing the logs with (replace **mongodb** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
 $ sudo docker-compose logs -f --tail=100 mongodb
 ```
 
-7. Enter to the bash console of the image with (replace **mongodb** by the **image_name** you configured in the `docker-compose.yml`)
+7. Enter to the bash console of the image with (replace **mongodb** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
 $ sudo docker exec -it mongodb bash
@@ -115,19 +115,19 @@ db.createUser({user: "clearpayAdmin", pwd: "h6rU2xWjT@=StU+s", roles : [{role: "
 ### Backend component installation
 
 1. Configure `docker-compose.yml` with the desired options (exposed port, database connection parameters in the **command** property...)
-2. Download the backend image with (replace **clearpay-be** by the **image_name** you configured in the `docker-compose.yml`)
+2. Download the backend image with (replace **clearpay-be** by the **container_name** you configured in the `docker-compose.yml`)
 
 ``` console
 $ sudo docker-compose pull clearpay-be
 ```
 
-3. Once downloaded, pull up the backend image with (replace **clearpay-be** by the **image_name** you configured in the `docker-compose.yml`)
+3. Once downloaded, pull up the backend image with (replace **clearpay-be** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
 $ sudo docker-compose up -d clearpay-be
 ```
 
-4. Verify the container is up and ready by reviewing the logs with (replace **clearpay-fe** by the **image_name** you configured in the `docker-compose.yml`)
+4. Verify the container is up and ready by reviewing the logs with (replace **clearpay-fe** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
 $ sudo docker-compose logs -f --tail=100 clearpay-fe
@@ -138,19 +138,19 @@ $ sudo docker-compose logs -f --tail=100 clearpay-fe
 ### Frontend component installation
 
 1. Configure `docker-compose.yml` with the desired options
-2. Download the frontend image with (replace **clearpay-fe** by the **image_name** you configured in the `docker-compose.yml`)
+2. Download the frontend image with (replace **clearpay-fe** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
 $ sudo docker-compose pull clearpay-fe
 ```
 
-3. Once downloaded, pull up the frontend image with (replace **clearpay-fe** by the **image_name** you configured in the `docker-compose.yml`)
+3. Once downloaded, pull up the frontend image with (replace **clearpay-fe** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
 $ sudo docker-compose up -d clearpay-fe
 ```
 
-4. Verify the container is up and ready by reviewing the logs with (replace **clearpay-be** by the **image_name** you configured in the `docker-compose.yml`)
+4. Verify the container is up and ready by reviewing the logs with (replace **clearpay-be** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```
 $ sudo docker-compose logs -f --tail=100 clearpay-be
