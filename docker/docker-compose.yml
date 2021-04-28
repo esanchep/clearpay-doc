@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo:4.2-bionic
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - /home/<user>/clearpay/database:/data/db
+      - /home/<user>/clearpay/scripts:/data/scripts
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+
+  clearpay-be:
+    image: clearpay-be:latest
+    container_name: clearpay-be
+    ports:
+      - 8080:8080
+    restart: unless-stopped
