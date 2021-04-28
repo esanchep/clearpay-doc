@@ -38,8 +38,10 @@
   | Product | | Version |
   |---|---|:-:|
   | MongoDB | | 4.2-bionic
+  | Maven | | 3.6.3 |
   | Java | | 8 |
   | Spring Boot | | 2.4.5 |
+  | npm | | 7.9.0 |
   | Angular | | 11 |
 
 <br/>
