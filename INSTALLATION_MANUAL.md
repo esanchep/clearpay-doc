@@ -41,6 +41,7 @@
   | Maven | | 3.6.3 |
   | Java | | 8 |
   | Spring Boot | | 2.4.5 |
+  | node | | 15.14.0 |
   | npm | | 7.9.0 |
   | Angular | | 11 |
 
