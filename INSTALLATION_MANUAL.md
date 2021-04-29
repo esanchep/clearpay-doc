@@ -114,6 +114,8 @@ db.createUser({user: "clearpayAdmin", pwd: "h6rU2xWjT@=StU+s", roles : [{role: "
 
 ### Backend component installation
 
+<span style="font-size: 12px; color: gray;">NOTE: the frontend Angular application is integrated as part of this image</span>
+
 1. Configure `docker-compose.yml` with the desired options (exposed port, database connection parameters in the **command** property...)
 2. Download the backend image with (replace **clearpay-be** by the **container_name** you configured in the `docker-compose.yml`)
 
@@ -130,29 +132,6 @@ $ sudo docker-compose up -d clearpay-be
 4. Verify the container is up and ready by reviewing the logs with (replace **clearpay-fe** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
-$ sudo docker-compose logs -f --tail=100 clearpay-fe
-```
-
-<br/>
-
-### Frontend component installation
-
-1. Configure `docker-compose.yml` with the desired options
-2. Download the frontend image with (replace **clearpay-fe** by the **container_name** you configured in the `docker-compose.yml`)
-
-```console
-$ sudo docker-compose pull clearpay-fe
-```
-
-3. Once downloaded, pull up the frontend image with (replace **clearpay-fe** by the **container_name** you configured in the `docker-compose.yml`)
-
-```console
-$ sudo docker-compose up -d clearpay-fe
-```
-
-4. Verify the container is up and ready by reviewing the logs with (replace **clearpay-be** by the **container_name** you configured in the `docker-compose.yml`)
-
-```
 $ sudo docker-compose logs -f --tail=100 clearpay-be
 ```
 
@@ -189,5 +168,5 @@ Following there are listed several items that were not possible to implement due
 ## Known issues
 
 - Frontend
-  - ISSUE: if and error occurs while recovering the list of users
-  - SOLUTION: add a search button (see [Wishlist](#wishlist) section)
+  - ISSUE: if and error occurs while recovering the list of users the user needs to refresh the browser in order to try again the users search
+  - SOLUTION: add a search button in the users section (see [Wishlist](#wishlist) section)
