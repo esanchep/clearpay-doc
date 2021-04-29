@@ -51,13 +51,13 @@
 
 <span style="font-size: 12px; color: gray;">NOTE: for product versions [see Product versions used](#product-versions-used) section</span>
 
-<span style="font-size: 12px; color: gray;">NOTE: Provided in this repo you will find a [`docker-compose.yml`](docker/docker-compose.yml) file with all the necessary parameters to set up the different containers.</span>
+<span style="font-size: 12px; color: gray;">NOTE: Provided in this repo you will find a [`docker-compose.yml`](docker/docker-compose.yml) file with all the necessary parameters to set up the different images.</span>
 
 <br/>
 
 ### Database component installation
 
-#### Without docker and docker-compose
+#### Without docker
 
 1. Manually install and configure MongoDB on your system
 2. Follow the [Common steps](#common-steps)
@@ -114,7 +114,33 @@ db.createUser({user: "clearpayAdmin", pwd: "h6rU2xWjT@=StU+s", roles : [{role: "
 
 ### Backend component installation
 
-<span style="font-size: 12px; color: gray;">NOTE: the frontend Angular application is integrated as part of this image</span>
+<span style="font-size: 12px; color: gray;">NOTE: the frontend Angular application is integrated within the Spring Boot project</span>
+
+#### Without docker
+
+1. Download the source code from the GitHub repo [here](https://github.com/esanchep/clearpay-be).
+2. Open a terminal and navigate to the root of the project (where the `pom-xml` is located)
+3. Execute the following command to build the Spring Boot project:
+
+```console
+$ mvn clean install
+```
+
+4. Execute the following command to build the Angular application in production mode and publish all the needed files to the **/public/** directory:
+
+```console
+$ mvn package
+```
+
+5. Run the following command th run the jar:
+
+```console
+java  -jar target/clearpay-1.0.0.jar
+```
+
+5. (bis) Alternatively you can just run the application from your favorite IDE
+
+#### With docker and docker-compose
 
 1. Configure `docker-compose.yml` with the desired options (exposed port, database connection parameters in the **command** property...)
 2. Download the backend image with (replace **clearpay-be** by the **container_name** you configured in the `docker-compose.yml`)
@@ -155,7 +181,7 @@ Following there are listed several items that were not possible to implement due
     - Configure material theme to not use the primary color (light greenish ClearPay color) on form items when focused
     - Implement some Unit Tests
     - Implement some Integration Tests
-  - Add multi-language support
+  - Add multi-language support (i18n + Translate is implemented but no select language nor xx.json files a part from default en.js were added)
   - Add search button on the users section to be able to manually search (see [Known issues](#known-issues) section)
 - Backend
   - Add multiple CRUD endpoints for users and wallets
