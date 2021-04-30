@@ -8,7 +8,7 @@ This is the source documentation for the ClearPay Code Challenge.
 
 - Documentation repo: [clearpay-doc](https://github.com/esanchep/clearpay-doc)
 - Database: no repo needed.
-- Backend repo: [clearpay-be](https://github.com/esanchep/clearpay-be)
+- ClearPay app repo: [clearpay](https://github.com/esanchep/clearpay)
 - ~~Frontend repo: [clearpay-fe](https://github.com/esanchep/clearpay-fe)~~ Deprecated
 
 <span style="font-size: 12px; color: gray;">NOTE: Angular application is now integrated in the Spring Boot project</span>
