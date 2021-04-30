@@ -118,7 +118,7 @@ db.createUser({user: "clearpayAdmin", pwd: "h6rU2xWjT@=StU+s", roles : [{role: "
 
 #### Without docker
 
-1. Download the source code from the GitHub repo [here](https://github.com/esanchep/clearpay-be).
+1. Download the source code from the GitHub repo [here](https://github.com/esanchep/clearpay).
 2. Open a terminal and navigate to the root of the project (where the `pom-xml` is located)
 3. Execute the following command to build the Spring Boot project:
 
@@ -143,22 +143,22 @@ java  -jar target/clearpay-1.0.0.jar
 #### With docker and docker-compose
 
 1. Configure `docker-compose.yml` with the desired options (exposed port, database connection parameters in the **command** property...)
-2. Download the backend image with (replace **clearpay-be** by the **container_name** you configured in the `docker-compose.yml`)
+2. Download the backend image with (replace **clearpay** by the **container_name** you configured in the `docker-compose.yml`)
 
 ``` console
-$ sudo docker-compose pull clearpay-be
+$ sudo docker-compose pull clearpay
 ```
 
-3. Once downloaded, pull up the backend image with (replace **clearpay-be** by the **container_name** you configured in the `docker-compose.yml`)
+3. Once downloaded, pull up the backend image with (replace **clearpay** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
-$ sudo docker-compose up -d clearpay-be
+$ sudo docker-compose up -d clearpay
 ```
 
 4. Verify the container is up and ready by reviewing the logs with (replace **clearpay-fe** by the **container_name** you configured in the `docker-compose.yml`)
 
 ```console
-$ sudo docker-compose logs -f --tail=100 clearpay-be
+$ sudo docker-compose logs -f --tail=100 clearpay
 ```
 
 <br/>

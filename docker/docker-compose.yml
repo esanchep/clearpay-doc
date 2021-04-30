@@ -13,9 +13,9 @@ services:
       - 27017:27017
     restart: unless-stopped
 
-  clearpay-be:
-    image: esanchezp/clearpay-be:latest
-    container_name: clearpay-be
+  clearpay:
+    image: esanchezp/clearpay:latest
+    container_name: clearpay
     ports:
       - 8080:8080
     restart: unless-stopped
